@@ -1,16 +1,13 @@
 # Dandorism Bluesky Bot
 
-This GitHub Actions bot publishes **one item per day**, seven days a week. It
+This GitHub Actions bot publishes one item per day, seven days a week. It
 chooses a random active item without repeats until the active backlog has been
 used, then begins another randomized cycle. It also chooses a random posting
 hour from 7 AM through 1 PM fixed EST.
 
-The bot publishes only material you write. It does not generate or rewrite
-content.
-
 ## How daily operation works
 
-GitHub runs the bot at about 7:17, 8:17, 9:17, 10:17, 11:17, 12:17, and 1:17
+GitHub is set to run the bot at 7:00, 8:00, 9:00, 10:00, 11:00, 12:00, and 1:00
 fixed EST. At the first check, the bot reserves a random unused entry and one of
 the remaining hours that day. At the selected hour it publishes that entry.
 GitHub can start scheduled jobs late, so these are approximate times.
