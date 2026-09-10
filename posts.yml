@@ -2,14 +2,271 @@ settings:
   # Keep false until the README's dry run and manual test have succeeded.
   enabled: false
 
-posts:
-  - id: welcome-to-dandorism
-    enabled: true
-    text: >-
-      Dandori is the art of arranging the work before the work begins.
-      Dandorism is the practice of carrying that preparation into everyday life.
+ettings:
+  # Keep false until the README's dry run and manual test have succeeded.
+  enabled: false
 
-  - id: example-clickable-link
-    enabled: false
+posts:
+  - id: 1
     text: >-
-      A complete URL such as https://example.com becomes clickable automatically.
+      “You are...a Dandori genius!” 🧠 #dandori
+
+  - id: 2
+    text: >-
+      “Division of labor...is important for Dandori.” 🤝 #dandori
+
+  - id: 3
+    text: >-
+      “You have good...Dandori!” 👍 #dandori
+
+  - id: 4
+    text: >-
+      “Your Dandori...needs work.” 🛠️ #dandori
+
+  - id: 5
+    text: >-
+      “But keep proper Dandori practices in mind, and think carefully about what will help you carry out your duties efficiently.” 💭 #dandori
+
+  - id: 6
+    text: >-
+      “Dandori Tips: Any Dandori master knows they must adjust their tasks based on the Pikmin available. Practice by allocating your squad in different ways!” 🔄 #dandori
+
+  - id: 7
+    text: >-
+      “Close your eyes. Clear your mind. Now, imagine the Dandori situations that you have already experienced.” 🧘 #dandori
+
+  - id: 8
+    text: >-
+      “The strength of your Dandori power is... magnificent.” ✨ #dandori
+
+  - id: 9
+    text: >-
+      “If you wish to retrieve your ‘castaway,’ prove that your Dandori abilities are superior to mine.” ⚔️ #dandori
+
+  - id: 10
+    text: >-
+      “Repeat Dandori...for good practice.” 🔁 #dandori
+
+  - id: 11
+    text: >-
+      “You wish to...take me from here. Show me your best... Dandori.” 💪 #dandori
+
+  - id: 12
+    text: >-
+      “This means...can Dandori forever. This is bliss...for me...and for you.” ♾️ #dandori
+
+  - id: 13
+    text: >-
+      “This place is...for testing Dandori. Do more Dandori... Improve Dandori.” 📈 #dandori
+
+  - id: 14
+    text: >-
+      “When I was leafified, I could not stop thinking about the art of Dandori. It was like an endless meditation.” 🍃 #dandori
+
+  - id: 15
+    text: >-
+      “Those who perfect the art of excavation can call themselves Dandori masters. Don’t let it be an elusive dream... Dig away!” ⛏️ #dandori
+
+  - id: 16
+    text: >-
+      “I...love Dandori! You...love Dandori?” ❤️ #dandori
+
+  - id: 17
+    text: >-
+      “Here...we test Dandori...” 🧪 #dandori
+
+  - id: 18
+    text: >-
+      “Come...it is Dandori time.” ⏰ #dandori
+
+  - id: 19
+    text: >-
+      “Your Dandori...is too good. I could never...beat...” 🏆 #dandori
+
+  - id: 20
+    text: >-
+      “Just like rescuing folks, construction is all about using your imagination and Dandori powers to get the job done.” 🏗️ #dandori
+
+  - id: 21
+    text: >-
+      “Come. Time for Dandori.” ⏱️ #dandori
+
+  - id: 22
+    text: >-
+      “It’s way important to have that desire to improve yourself. And that applies to more than just the art of Dandori!” 🌱 #dandori
+
+  - id: 23
+    text: >-
+      “Hey, you! I was impressed with your Dandori powers.” 👏 #dandori
+
+  - id: 24
+    text: >-
+      “Those who do not embrace Dandori cannot survive this planet... But if they grow the leaves...we can return them to life.” 🌿 #dandori
+
+  - id: 25
+    text: >-
+      “Their Dandori skills are unbelievable. I doubt there’s anyone in this galaxy who could beat them...” 🌌 #dandori
+
+  - id: 26
+    text: >-
+      “A Dandori masterpiece!” 🎨 #dandori
+
+  - id: 27
+    text: >-
+      “Setting up shortcuts seems like a great way to improve your Dandori practice.” 🛣️ #dandori
+
+  - id: 28
+    text: >-
+      “Dandori anytime... Dandori anywhere... Dandori over...and over...and over again.” 🔄 #dandori
+
+  - id: 29
+    text: >-
+      “Show me...your Dandori...” 👀 #dandori
+
+  - id: 30
+    text: >-
+      “No need...for introductions. I see...who you are...through Dandori.” 🔍 #dandori
+
+  - id: 31
+    text: >-
+      “Again you have shown mastery in the art of Dandori... I leave the rest to you.” 🎓 #dandori
+
+  - id: 32
+    text: >-
+      “Never give up...on Dandori. Go to the end.” 🏁 #dandori
+
+  - id: 33
+    text: >-
+      “Dandori no good.” 👎 #dandori
+
+  - id: 34
+    text: >-
+      “Show me...your best Dandori.” 🌟 #dandori
+
+  - id: 35
+    text: >-
+      “Steady progress is...also good Dandori.” 🐢 #dandori
+
+  - id: 36
+    text: >-
+      “Rescue operations are a race against time, so put your Dandori skills to work to find our Rescue Officers quickly.” 🚨 #dandori
+
+  - id: 37
+    text: >-
+      “Assign Pikmin...tasks they like... This is...key to success...” 🗝️ #dandori
+
+  - id: 38
+    text: >-
+      “One must be resilient and keep visualizing Dandori scenarios in order to figure out the best solutions.” 🧩 #dandori
+
+  - id: 39
+    text: >-
+      “Embracing the art of Dandori is essential to our work. And you’ll need it out there while searching for our Rescue Officers!” 🫡 #dandori
+
+  - id: 40
+    text: >-
+      “The more shortcuts you create to speed up transportation, the more you display your Dandori talents.” 🚚 #dandori
+
+  - id: 41
+    text: >-
+      “Any Dandori master knows they must adjust their tasks based on the Pikmin available. Practice by allocating your squad in different ways!” ⚖️ #dandori
+
+  - id: 42
+    text: >-
+      “Dandori is the art of organizing your tasks strategically and working efficiently to execute your plans. Try to practice it in everyday life!” 📋 #dandori
+
+  - id: 43
+    text: >-
+      “Dandori is the art of organizing your tasks strategically and working with maximum efficiency to execute your plans quickly.” ⚡ #dandori
+
+  - id: 44
+    text: >-
+      “Throw your all...into Dandori.” 🔥 #dandori
+
+  - id: 45
+    text: >-
+      “Today...we Dandori. Tomorrow...we Dandori more.” 🌅 #dandori
+
+  - id: 46
+    text: >-
+      “Then that’s what we’ll give them. Go show that leafling all the Dandori skills you’ve got in your arsenal, rookie!” 🧰 #dandori
+
+  - id: 47
+    text: >-
+      “But to rescue that leafling, we’re going to need a true Dandori master.” 🦸 #dandori
+
+  - id: 48
+    text: >-
+      “Interesting, interesting... Your Dandori skills are becoming second nature!” 🌳 #dandori
+
+  - id: 49
+    text: >-
+      “Those were some incredible Dandori skills! Alright, let’s get them outta here!” 🚀 #dandori
+
+  - id: 50
+    text: >-
+      “Strength and spirit alone aren’t enough for an adventure. You also need the ability to imagine achieving the best Dandori outcomes. Take on some battles, and polish your Dandori skills.” 🛡️ #dandori
+
+  - id: 51
+    text: >-
+      “There’s not much...Dandori time left.” ⌛ #dandori
+
+  - id: 52
+    text: >-
+      “If you can visualize your Dandori well, I will present you with a small reward.” 🎁 #dandori
+
+  - id: 53
+    text: >-
+      “The survival of society as we know it is in your hands...and Dandori prowess! Take on more Dandori Battles, and hone your skills.” 🌍 #dandori
+
+  - id: 54
+    text: >-
+      “You’ve shown some Dandori expertise! But I wonder... How will you fare next time?” 🤔 #dandori
+
+  - id: 55
+    text: >-
+      “Your Dandori skills are praiseworthy!” 🙌 #dandori
+
+  - id: 56
+    text: >-
+      “Dandori masters make use of all they find!” ♻️ #dandori
+
+  - id: 57
+    text: >-
+      “I’ve very disappointed in you. Your Dandori abilities are far from impressive.” 😞 #dandori
+
+  - id: 58
+    text: >-
+      “Let us see your Dandori practice in action.” 🎬 #dandori
+
+  - id: 59
+    text: >-
+      “I have to get the Dandorium...” 💎 #dandori
+
+  - id: 60
+    text: >-
+      “While I had leave on the brain, my head couldn’t STOP thinking about Dandori...” 🍂 #dandori
+
+  - id: 61
+    text: >-
+      “If I had Dandori abilities like yours...maybe I could have found my way...home.” 🏠 #dandori
+
+  - id: 62
+    text: >-
+      “I must admit, your abilities have impressed me. But let us settle once and for all who is the Dandori master.” 🥊 #dandori
+
+  - id: 63
+    text: >-
+      “Incredible Dandori... It’s shocking...that you beat the record...” 🥇 #dandori
+
+  - id: 64
+    text: >-
+      “Olimar’s Shipwreck Tale: You must gather 30 ship parts within 15 days’ time. Olimar’s fate rests in the strength of your Dandori practice.” 🚀 #dandori
+
+  - id: 65
+    text: >-
+      “Increase Pikmin... Do not lose them. This is...basic Dandori.” ➕ #dandori
+
+  - id: 66
+    text: >-
+      “For I am...what you might call the Great Master of the art of Dandori.” 👑 #dandori
