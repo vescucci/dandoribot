@@ -1,10 +1,6 @@
 settings:
   # Keep false until the README's dry run and manual test have succeeded.
-  enabled: false
-
-ettings:
-  # Keep false until the README's dry run and manual test have succeeded.
-  enabled: false
+  enabled: true
 
 posts:
   - id: 1
