@@ -1,4 +1,0 @@
-atproto==0.0.65
-httpx==0.28.1
-PyYAML==6.0.2
-regex==2025.9.18
