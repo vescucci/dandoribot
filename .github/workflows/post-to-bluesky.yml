@@ -1,0 +1,132 @@
+name: Dandorism daily Bluesky post
+
+on:
+  schedule:
+    # 12:17–18:17 UTC equals 7:17 AM–1:17 PM fixed EST.
+    - cron: "17 12-18 * * *"
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "Optional active post ID to select manually"
+        required: false
+        type: string
+      dry_run:
+        description: "Validate only—publish nothing"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: dandorism-bluesky-poster
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        id: bot
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          EVENT_NAME: ${{ github.event_name }}
+          MANUAL_POST_ID: ${{ inputs.post_id }}
+          MANUAL_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=()
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            if [[ "$MANUAL_DRY_RUN" == "true" ]]; then args+=(--dry-run); fi
+            if [[ -n "$MANUAL_POST_ID" ]]; then args+=(--post-id "$MANUAL_POST_ID"); fi
+          fi
+          set +e
+          python bot.py "${args[@]}"
+          code=$?
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+
+      - name: Record scheduler state
+        if: ${{ !cancelled() }}
+        run: |
+          if git diff --quiet -- state.json; then
+            echo "No scheduler state changed."
+            exit 0
+          fi
+          git config user.name "Dandorism Bluesky Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git commit -m "Update Dandorism posting state"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Update bot notices
+        if: ${{ !cancelled() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('.bot-result.json')) return;
+            const result = JSON.parse(fs.readFileSync('.bot-result.json', 'utf8'));
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', per_page: 100
+            });
+            async function closeTitle(title, comment) {
+              for (const issue of issues.filter(x => !x.pull_request && x.title === title)) {
+                if (comment) await github.rest.issues.createComment({owner, repo, issue_number: issue.number, body: comment});
+                await github.rest.issues.update({owner, repo, issue_number: issue.number, state: 'closed'});
+              }
+            }
+            for (const id of (result.released_ids || [])) {
+              await closeTitle(`Dandorism bot quarantine: ${id}`, `The contents of \`${id}\` changed, so it was automatically released from quarantine.`);
+            }
+            if (result.status === 'posted') {
+              await closeTitle(`Dandorism bot retry: ${result.post_id}`, `The retry succeeded and the post was published.`);
+              return;
+            }
+            if (!['retrying', 'quarantined', 'configuration_error'].includes(result.status)) return;
+            const id = result.post_id || 'configuration';
+            const title = result.status === 'quarantined'
+              ? `Dandorism bot quarantine: ${id}`
+              : `Dandorism bot retry: ${id}`;
+            if (result.status === 'quarantined') {
+              await closeTitle(`Dandorism bot retry: ${id}`, `Three attempts failed. This entry is now quarantined.`);
+            }
+            const body = [
+              `**Status:** ${result.status}`,
+              result.attempt ? `**Attempt:** ${result.attempt} of 3` : '',
+              `**Post ID:** \`${id}\``,
+              '',
+              '```text',
+              String(result.error || 'Unknown error').slice(0, 4000),
+              '```',
+              '',
+              result.status === 'quarantined'
+                ? 'Edit meaningful content in this entry to release it automatically.'
+                : 'The bot will retry this same entry at the next scheduled check.'
+            ].filter(Boolean).join('\n');
+            const existing = issues.find(x => !x.pull_request && x.title === title);
+            if (existing) await github.rest.issues.createComment({owner, repo, issue_number: existing.number, body});
+            else await github.rest.issues.create({owner, repo, title, body});
+
+      - name: Report unsuccessful attempt
+        if: ${{ steps.bot.outputs.exit_code != '0' }}
+        run: exit "${{ steps.bot.outputs.exit_code }}"
