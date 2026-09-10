@@ -1,19 +1,15 @@
 # Dandorism Bluesky Bot
 
-This GitHub Actions bot publishes **one item per day**, seven days a week. It
-chooses a random active item without repeats until the active backlog has been
+This GitHub Actions bot publishes one item per day, seven days a week. It
+chooses a random active item and repeats until the active backlog has been
 used, then begins another randomized cycle. It also chooses a random posting
 hour from 7 AM through 1 PM fixed EST.
 
-The bot publishes only material you write. It does not generate or rewrite
-content.
+## Daily operation
 
-## How daily operation works
-
-GitHub runs the bot at about 7:17, 8:17, 9:17, 10:17, 11:17, 12:17, and 1:17
-fixed EST. At the first check, the bot reserves a random unused entry and one of
-the remaining hours that day. At the selected hour it publishes that entry.
-GitHub can start scheduled jobs late, so these are approximate times.
+GitHub runs the bot at any hour between 7:17 - 1:17 EST (:17 as to pick a less busy time 
+from other GitHub workflows). At the first check, the bot reserves a random unused entry 
+and one of the remaining hours that day. At the selected hour it publishes that entry.
 
 - A whole thread counts as the day's one selected item.
 - If a thread fails partway through, its next attempt resumes at the failed part
@@ -27,7 +23,7 @@ GitHub can start scheduled jobs late, so these are approximate times.
 
 ## Installation
 
-1. Create a new **private** GitHub repository.
+1. Create a new GitHub repository.
 2. Upload all files and folders from this package. Preserve the
    `.github/workflows/` folders.
 3. In Bluesky, open **Settings → Privacy and Security → App passwords** and
@@ -35,9 +31,6 @@ GitHub can start scheduled jobs late, so these are approximate times.
 4. In GitHub, open **Settings → Secrets and variables → Actions** and add:
    - `BLUESKY_HANDLE` — the complete handle, such as `dandorism.bsky.social`
    - `BLUESKY_APP_PASSWORD` — the separate app password from Bluesky
-5. Never put a password in `posts.yml`, source code, screenshots, or commits.
-
-The repository starts with automatic posting paused.
 
 ## Test and activate
 
@@ -48,21 +41,19 @@ The repository starts with automatic posting paused.
 5. To publish a real manual test, run it again with an active post ID and turn
    off **Validate only**. A manual publication counts as that day's post.
 6. When satisfied, change `settings.enabled` in `posts.yml` to `true`.
-
-Pause the bot at any time by changing it back to `false`:
+  Pause the bot at any time by changing it back to `false`:
 
 ```yaml
 settings:
   enabled: false
 ```
 
-## Master-list rules
+## Post-list rules
 
 All content lives under `posts:` in `posts.yml`.
 
-- Every entry needs a permanent, unique `id`.
+- Every entry needs a unique `id`.
 - IDs use lowercase letters, numbers, hyphens, and underscores only.
-- Never reuse an old ID for unrelated content.
 - `enabled` is optional and defaults to `true`.
 - YAML indentation matters: use spaces, never tabs.
 - `>-` makes multi-line YAML source become one readable paragraph.
