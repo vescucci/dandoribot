@@ -4,6 +4,12 @@
   "history": [],
   "last_post_id": null,
   "quarantined": {},
-  "reservation": null,
+  "reservation": {
+    "attempts": [],
+    "date_selected": "2026-09-10",
+    "fingerprint": "5506ffdcac370029bf1907056ebf69e8e15f9cd4e06fc077618530a35162797a",
+    "post_id": "41",
+    "target_hour": 12
+  },
   "used_ids": []
 }
