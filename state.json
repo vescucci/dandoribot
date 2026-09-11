@@ -1,27 +1,31 @@
 {
   "cycle": 1,
-  "daily_results": {},
+  "daily_results": {
+    "2026-09-11": {
+      "post_id": "41",
+      "status": "posted"
+    }
+  },
   "history": [
     {
       "at": "2026-09-10T19:41:07.993414+00:00",
       "error": "BadRequestError: Response(success=False, status_code=400, content=XrpcError(error='InvalidEmail', message='Invalid email address: Address local part cannot be empty'), headers={'date': 'Thu, 10 Sep 2026 19:41:07 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '94', 'connection': 'keep-alive', 'x-powered-by': 'Express', 'access-control-allow-origin': '*', 'ratelimit-limit': '10', 'ratelimit-reset': '1789155667', 'ratelimit-remaining': '9', 'ratelimit-policy': '10;w=86400', 'etag': 'W/\"5e-ihDCbPDfE430AH4SfzBz1GHgf2w\"', 'vary': 'Accept-Encoding'})",
       "post_id": "41",
       "status": "retrying"
+    },
+    {
+      "at": "2026-09-11T16:27:45.174257+00:00",
+      "post_id": "41",
+      "status": "posted",
+      "uris": [
+        "at://did:plc:l7izcffzzigssf3ivpe6bv3x/app.bsky.feed.post/3mvaycbcwrk23"
+      ]
     }
   ],
-  "last_post_id": null,
+  "last_post_id": "41",
   "quarantined": {},
-  "reservation": {
-    "attempts": [
-      {
-        "at": "2026-09-10T19:41:07.993414+00:00",
-        "error": "BadRequestError: Response(success=False, status_code=400, content=XrpcError(error='InvalidEmail', message='Invalid email address: Address local part cannot be empty'), headers={'date': 'Thu, 10 Sep 2026 19:41:07 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '94', 'connection': 'keep-alive', 'x-powered-by': 'Express', 'access-control-allow-origin': '*', 'ratelimit-limit': '10', 'ratelimit-reset': '1789155667', 'ratelimit-remaining': '9', 'ratelimit-policy': '10;w=86400', 'etag': 'W/\"5e-ihDCbPDfE430AH4SfzBz1GHgf2w\"', 'vary': 'Accept-Encoding'})"
-      }
-    ],
-    "date_selected": "2026-09-10",
-    "fingerprint": "5506ffdcac370029bf1907056ebf69e8e15f9cd4e06fc077618530a35162797a",
-    "post_id": "41",
-    "target_hour": 12
-  },
-  "used_ids": []
+  "reservation": null,
+  "used_ids": [
+    "41"
+  ]
 }
