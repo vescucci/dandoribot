@@ -17,6 +17,7 @@ POSTS_FILE, STATE_FILE, RESULT_FILE = ROOT / "posts.yml", ROOT / "state.json", R
 EST = timezone(timedelta(hours=-5), name="EST")
 MAX_GRAPHEMES, MAX_TEXT_BYTES, MAX_IMAGE_BYTES, MAX_IMAGES = 300, 3000, 1_000_000, 4
 URL_RE = re.compile(r"https?://[^\s<>\"]+")
+HASHTAG_RE = regex.compile(r"(?<![\p{L}\p{M}\p{N}_])#([\p{L}\p{M}\p{N}_]{1,64})(?![\p{L}\p{M}\p{N}_])")
 TRAILING_PUNCTUATION = ".,!?;:)]}"
 
 
@@ -170,14 +171,22 @@ def choose_post(state: dict[str, Any], posts: dict[str, dict[str, Any]], today: 
     state["reservation"] = {"post_id": post_id, "fingerprint": posts[post_id]["fingerprint"], "date_selected": today, "target_hour": picker.choice(list(range(max(7, hour), 14))), "attempts": []}
 
 
-def clickable_link_facets(text: str) -> list[Any]:
+def rich_text_facets(text: str) -> list[Any]:
     facets = []
+    occupied_ranges = []
     for match in URL_RE.finditer(text):
         url = match.group(0).rstrip(TRAILING_PUNCTUATION)
         if not urlparse(url).netloc: continue
         start, end = match.start(), match.start() + len(url)
+        occupied_ranges.append((start, end))
         facets.append(models.AppBskyRichtextFacet.Main(index=models.AppBskyRichtextFacet.ByteSlice(byte_start=len(text[:start].encode()), byte_end=len(text[:end].encode())), features=[models.AppBskyRichtextFacet.Link(uri=url)]))
-    return facets
+    for match in HASHTAG_RE.finditer(text):
+        start, end = match.span()
+        if any(start < occupied_end and end > occupied_start for occupied_start, occupied_end in occupied_ranges):
+            continue
+        tag = match.group(1)
+        facets.append(models.AppBskyRichtextFacet.Main(index=models.AppBskyRichtextFacet.ByteSlice(byte_start=len(text[:start].encode()), byte_end=len(text[:end].encode())), features=[models.AppBskyRichtextFacet.Tag(tag=tag)]))
+    return sorted(facets, key=lambda facet: facet.index.byte_start)
 
 
 def assert_public_web_url(url: str) -> None:
@@ -228,7 +237,7 @@ def publish_entry(client: Client, post: dict[str, Any], reservation: dict[str, A
     parent_ref = models.ComAtprotoRepoStrongRef.Main(**progress["parent"]) if progress.get("parent") else None
     for part in post["parts"][len(uris):]:
         reply = models.AppBskyFeedPost.ReplyRef(root=root_ref, parent=parent_ref) if root_ref and parent_ref else None
-        response = client.send_post(text=part["text"], facets=clickable_link_facets(part["text"]) or None, embed=build_embed(client, part), reply_to=reply)
+        response = client.send_post(text=part["text"], facets=rich_text_facets(part["text"]) or None, embed=build_embed(client, part), reply_to=reply)
         current = models.ComAtprotoRepoStrongRef.Main(uri=response.uri, cid=response.cid); root_ref = root_ref or current; parent_ref = current; uris.append(response.uri)
         progress["root"] = {"uri": root_ref.uri, "cid": root_ref.cid}
         progress["parent"] = {"uri": parent_ref.uri, "cid": parent_ref.cid}
