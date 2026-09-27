@@ -64,6 +64,10 @@
     "2026-09-26": {
       "post_id": "75",
       "status": "posted"
+    },
+    "2026-09-27": {
+      "post_id": "10",
+      "status": "posted"
     }
   },
   "history": [
@@ -200,18 +204,21 @@
       "uris": [
         "at://did:plc:l7izcffzzigssf3ivpe6bv3x/app.bsky.feed.post/3mwgoz6geno2f"
       ]
+    },
+    {
+      "at": "2026-09-27T20:08:51.485633+00:00",
+      "post_id": "10",
+      "status": "posted",
+      "uris": [
+        "at://did:plc:l7izcffzzigssf3ivpe6bv3x/app.bsky.feed.post/3mwjm4egabt22"
+      ]
     }
   ],
-  "last_post_id": "75",
+  "last_post_id": "10",
   "quarantined": {},
-  "reservation": {
-    "attempts": [],
-    "date_selected": "2026-09-27",
-    "fingerprint": "69a4a9287aef61aae3dc70a408ac38a14eb7614169d6567a131e66b5d9fc069c",
-    "post_id": "10",
-    "target_hour": 12
-  },
+  "reservation": null,
   "used_ids": [
+    "10",
     "14",
     "26",
     "29",
