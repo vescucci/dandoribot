@@ -176,6 +176,10 @@
     "2026-10-28": {
       "post_id": "78",
       "status": "posted"
+    },
+    "2026-10-29": {
+      "post_id": "30",
+      "status": "posted"
     }
   },
   "history": [
@@ -536,9 +540,17 @@
       "uris": [
         "at://did:plc:l7izcffzzigssf3ivpe6bv3x/app.bsky.feed.post/3myxeiuxcdw2d"
       ]
+    },
+    {
+      "at": "2026-10-29T18:27:31.265676+00:00",
+      "post_id": "30",
+      "status": "posted",
+      "uris": [
+        "at://did:plc:l7izcffzzigssf3ivpe6bv3x/app.bsky.feed.post/3myzvemn6ai2l"
+      ]
     }
   ],
-  "last_post_id": "78",
+  "last_post_id": "30",
   "quarantined": {},
   "reservation": null,
   "used_ids": [
@@ -556,6 +568,7 @@
     "28",
     "29",
     "3",
+    "30",
     "31",
     "33",
     "35",
