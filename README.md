@@ -106,7 +106,8 @@ useful alt text and must be no larger than 1 MB.
       The arrangement of the workspace shapes the movement of the work.
     images:
       - path: images/prepared-workbench.jpg
-        alt: "A workbench with frequently used tools arranged within easy reach."
+        alt: >-
+          A workbench with frequently used tools arranged within easy reach.
 ```
 
 ### Multiple images
