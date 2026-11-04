@@ -83,8 +83,11 @@ def content_fingerprint(entry: dict[str, Any]) -> str:
     return hashlib.sha256(json.dumps(meaningful, sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()
 
 
-def validate_text(text: Any, label: str) -> str:
-    if not isinstance(text, str) or not text.strip(): raise BotError(f"{label} has no text.")
+def validate_text(text: Any, label: str, allow_empty: bool = False) -> str:
+    if text is None or (isinstance(text, str) and not text.strip()):
+        if allow_empty: return ""
+        raise BotError(f"{label} has no text.")
+    if not isinstance(text, str): raise BotError(f"{label} text must be a string.")
     result = text.strip(); graphemes = len(regex.findall(r"\X", result))
     if graphemes > MAX_GRAPHEMES or len(result.encode()) > MAX_TEXT_BYTES:
         raise BotError(f"{label} exceeds Bluesky's limit ({graphemes}/{MAX_GRAPHEMES} graphemes). Make it an intentional thread.")
@@ -128,7 +131,7 @@ def normalize_part(value: Any, label: str, check_files: bool) -> dict[str, Any]:
     if not isinstance(value, dict): raise BotError(f"{label} must be an object.")
     images = normalize_images(value.get("images"), label, check_files); card = normalize_card(value.get("link_card"), label, check_files)
     if images and card: raise BotError(f"{label} cannot combine images with a preview card (a Bluesky embed limitation).")
-    return {"text": validate_text(value.get("text"), label), "images": images, "link_card": card}
+    return {"text": validate_text(value.get("text"), label, allow_empty=bool(images)), "images": images, "link_card": card}
 
 
 def normalize_posts(raw_posts: list[Any]) -> dict[str, dict[str, Any]]:
