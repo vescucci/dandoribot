@@ -323,8 +323,9 @@ posts:
     text: >-
       Creating specific spaces for your important items will drastically improve your Dandori if you stay disciplined in using them. Try putting your wallet and keys in the same spot each day for a start. 🔑 #dandori
 
-  - id: ss1
+  - id: screenshot-1
     text: >-
     images:
       - path: images/great-master-dandori.png
-        alt: "A screenshot from Pikmin 4. The character Sage Leaf is saying 'For I am...what you might call the Great Master of the art of Dandori.'"
+        alt: >-
+          A screenshot from Pikmin 4. The character Sage Leaf is saying "For I am...what you might call the Great Master of the art of Dandori."
