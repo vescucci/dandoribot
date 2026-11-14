@@ -624,7 +624,13 @@
   ],
   "last_post_id": "21",
   "quarantined": {},
-  "reservation": null,
+  "reservation": {
+    "attempts": [],
+    "date_selected": "2026-11-14",
+    "fingerprint": "d6df6258138364430a37d68d90fdbf86d386fff2c1aa8dd710a21195b2ff9b46",
+    "post_id": "27",
+    "target_hour": 13
+  },
   "used_ids": [
     "1",
     "10",
